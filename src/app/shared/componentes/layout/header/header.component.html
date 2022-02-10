@@ -1,0 +1,90 @@
+<!-- <mat-toolbar color="primary" class="toolbar-navigation">
+
+  <mat-toolbar-row>
+
+    <button mat-icon-button (click)="toggleSidenav.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="toolbar-title"> {{ 'APP_TOOLBAR_TITLE' | translate }} </span>
+
+    <div fxFlex fxLayout fxLayoutAlign="flex-end" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-end; align-items: stretch; flex: 1 1 0%;">
+
+      <ul fxLayout fxLayoutGap="20px" class="navigation-items" style="flex-direction: row; box-sizing: border-box; display: flex;">
+
+        <li fxHide.xs>
+          <button mat-icon-button>
+            <mat-icon> settings </mat-icon>
+          </button>
+        </li>
+
+        <li fxHide.xs>
+          <button mat-icon-button>
+            <mat-icon> help_outline </mat-icon>
+          </button>
+        </li>
+
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="auth">
+            <mat-icon> person </mat-icon>
+          </button>
+          <mat-menu #auth="matMenu">
+
+            <button mat-menu-item (click)="onProfile()">
+              <mat-icon> person </mat-icon>
+              <span> {{ 'PROFILE_NAVIGATION_BAR_BUTTON' | translate }} </span>
+            </button>
+
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item (click)="logout()">
+              <mat-icon> exit_to_app </mat-icon>
+              <span> {{ 'SIGN_OUT_NAVIGATION_BAR_BUTTON' | translate }} </span>
+            </button>
+
+          </mat-menu>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </mat-toolbar-row>
+
+</mat-toolbar> -->
+
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="toolbar-title"> {{ 'APP_TOOLBAR_TITLE' | translate }} </span>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+    matTooltip="{{currentUser.username}}">
+    <img class="img-profile rounded-circle" src="../../../../../assets//images/nopictureuser.png">
+  </button>
+  <mat-menu #menu="matMenu">
+    <div class="dropdown-item d-flex align-items-center" matTooltip="{{currentUser.username}}">
+      <div class="dropdown-list-image mr-3">
+        <img class="rounded-circle" src="../../../../../assets/images/nopictureuser.png" alt="">
+      </div>
+
+      <div class="font-weight-bold">
+        <div class="text-truncate">{{currentUser.firstName}}</div>
+        <div class="small text-gray-500">{{currentUser.username}}</div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item disabled>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <i class="fas fa-sign-out-alt fa-fw text-red"></i>
+      <span class="drop-list-icon">{{ 'LOG_OUT' | translate }}</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

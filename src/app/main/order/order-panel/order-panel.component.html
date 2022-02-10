@@ -1,0 +1,191 @@
+<div class="container" [busyIf]="isLoading">
+    <perfect-scrollbar>
+        <div class="container-fluid pt-3">
+
+            <!-- <h3 class="font-weight-light">{{'ORDER_TRACKING_BOARD' | translate}}</h3> -->
+            <!-- <div class="small">Drag and drop between swim lanes</div> -->
+
+            <app-kanban-board *ngIf="board" [boardItems]="board" (cdkDropListDropped)="dropp($event); "
+                (onClickDetailsEvent)="showOrderDetails($event)" (onClickUpdateStatusEvent)="updateStatusOrder($event)">
+            </app-kanban-board>
+
+            <div class="row flex-row flex-sm-nowrap py-3">
+                <!-- <div class="col-sm-6 col-md-4 col-xl-3">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-truncate">
+                                <span class="float-start">
+                                    {{'NEWS_ORDERS_HEADER' | translate }}
+                                    <span class="badge bg-grey  ms-2">{{pedidos.length}}</span>
+                                </span>
+                                <i class="float-end fa fa-list-alt"></i>
+                            </h6>
+
+
+                            <div cdkDropList #newOrderList="cdkDropList" [cdkDropListData]="pedidos"
+                                [cdkDropListConnectedTo]="[waitList]" class="card-list-items">
+
+                                <div class="card draggable text-dark item-new shadow-sm" *ngFor="let pedido of pedidos"
+                                    cdkDrag>
+                                    <div class="example-ripple-container mat-elevation-z4" matRipple
+                                        [matRippleCentered]="centered" [matRippleDisabled]="disabled"
+                                        [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+                                        [matRippleColor]="color" (click)="showOrderDetails(pedido.id)">
+
+                                        <div class="card-body p-2">
+                                            <div class="card-title">
+                                                <span class="lead font-weight-bold">#{{pedido.id}}</span>
+                                            </div>
+                                            <p>
+                                                {{pedido.endereco}}
+                                            </p>
+
+                                            <div class="float-start">
+                                                <i class="fa fa-clock"></i>
+                                                {{pedido?.data.format("HH:mm:ss")}}
+                                            </div>
+
+                                            <div class="float-end">
+                                                <a href="#!" class="card-link"><i class="text-dark fa fa-times"></i></a>
+                                                <a href="javscript:void(0);" (click)="updateStatusOrder(pedido)"
+                                                    class="card-link">
+                                                    <i class="text-dark fa fa-check"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="col-sm-6 col-md-4 col-xl-3">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-truncate">
+                                <span class="float-start">
+                                    {{'PREPARING_HEADER' | translate }}
+                                    <span class="badge bg-grey  ms-2">{{pedidosEmAndamento.length}}</span>
+                                </span>
+                                <i class="float-end fas fa-hamburger"></i>
+                            </h6>
+                            <div class="items">
+
+                                <div cdkDropList #waitList="cdkDropList" [cdkDropListData]="pedidosEmAndamento"
+                                    class="card-list-items" (cdkDropListDropped)="drop($event, 2)">
+                                    <div class="card border-warning draggable item-praparing shadow-sm"
+                                        *ngFor="let pedido of pedidosEmAndamento" cdkDrag>
+                                        <div class="card-body p-2" matRipple [matRippleCentered]="centered"
+                                            [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded"
+                                            [matRippleRadius]="radius" [matRippleColor]="color"
+                                            (click)="showOrderDetails(pedido.id)">
+                                            <div class="card-title">
+                                                <span class="lead font-weight-bold">#{{pedido.id}}</span>
+                                            </div>
+                                            <p>
+                                                {{pedido.endereco}}
+                                            </p>
+                                            <div class="float-start">
+                                                <i class="fa fa-clock"></i>
+                                                {{pedido?.data.format("HH:mm:ss")}}
+                                            </div>
+                                            <div class="float-end">
+                                                <a href="#!" class="card-link"><i class="text-dark fa fa-times"></i></a>
+                                                <a href="javscript:void(0);" class="card-link"><i
+                                                        class="text-dark fa fa-check"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="col-sm-6 col-md-4 col-xl-3">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-truncate">
+                                <span class="float-start">
+                                    {{'IN_DELIVERY_HEADER' | translate }}
+                                    <span class="badge bg-grey  ms-2">{{pedidosEmAndamento.length}}</span>
+                                </span>
+                                <i class="float-end fas fa-hamburger"></i>
+                            </h6>
+                            <div class="items">
+
+                                <div cdkDropList #waitList="cdkDropList" [cdkDropListData]="pedidosEmAndamento"
+                                    class="card-list-items" (cdkDropListDropped)="drop($event, 2)">
+                                    <div class="card border-warning draggable text-white bg-warning shadow-sm"
+                                        *ngFor="let pedido of pedidosEmAndamento" cdkDrag>
+                                        <div class="card-body p-2" matRipple [matRippleCentered]="centered"
+                                            [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded"
+                                            [matRippleRadius]="radius" [matRippleColor]="color"
+                                            (click)="showOrderDetails(pedido.id)">
+                                            <div class="card-title">
+                                                <span class="lead font-weight-bold">#{{pedido.id}}</span>
+                                            </div>
+                                            <p>
+                                                {{pedido.endereco}}
+                                            </p>
+                                            <div class="float-start">
+                                                <i class="fa fa-clock"></i>
+                                                {{pedido?.data.format("HH:mm:ss")}}
+                                            </div>
+                                            <div class="float-end">
+                                                <a href="#!" class="card-link"><i
+                                                        class="text-white fa fa-times"></i></a>
+                                                <a href="javscript:void(0);" class="card-link"><i
+                                                        class="text-white fa fa-check"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- <mat-drawer-container class="example-container" [hasBackdrop]="true">
+            <mat-drawer #drawer mode="over" opned="true">Detalhes pedido</mat-drawer>
+            <mat-drawer-content>
+              d
+              <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+            </mat-drawer-content>
+          </mat-drawer-container>  -->
+
+        </div>
+    </perfect-scrollbar>
+    <!-- <mat-sidenav style="width:333px" #OrderDetails position="end" mode="over" opened="true">
+        <mat-sidenav-content>
+            <div class="col-sm-4">
+                Pedidos details
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav> -->
+
+</div>
+
+<!-- <div class="example-container">
+        <h2>To do</h2>
+
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </div>
+    </div>
+
+    <div class="example-container">
+        <h2>Done</h2>
+
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+            class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </div>
+    </div> -->

@@ -1,0 +1,162 @@
+<mat-card style="padding:0">
+    <mat-card-header style="padding:1rem; border-top: 1px solid white;"
+        [style.background-color]="getBackgroundColorByStatus(pedido?.status)">
+        <div class="container">
+            <div class="row py-1">
+                <div class="col-md-6">
+                    <div class="float-start" style="color: #fff;">
+                        Pedido #{{pedido?.id}} - status: {{pedido?.status}}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="float-end">
+                        <a href="javascript:void();" class="card-link">
+                            <i class="text-white fa fa-times" (click)="sidebarOrderDetailsService.close()"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-header>
+</mat-card>
+
+<mat-card class="example-card">
+
+    <!-- <mat-card-header style="padding:1rem; background-color: blue">
+        Pedido #{{id}}
+    </mat-card-header> -->
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+
+                <mat-card-header style="padding:1rem; background-color: blue">
+                    <mat-card-subtitle>Pedido #{{id}} </mat-card-subtitle>
+                </mat-card-header>
+            </div>
+
+            <div class="col-md-1 float-end">
+                <a href="javascript:void();" class="card-link"><i class="text-grey fa fa-times"
+                        (click)="sidebarOrderDetailsService.close()"></i></a>
+            </div>
+        </div>
+    </div> -->
+    <mat-divider inset></mat-divider>
+
+    <div class="container">
+        <div class="row flex-row flex-sm-nowrap py-3">
+            <mat-card-content>
+                <div class="row">
+                    <p>
+                        <i class="fa fa-calendar"></i>
+                        Data do pedido: 30/11/2021 10:00
+                    </p>
+                </div>
+
+                <div class="row">
+                    <p class="font-weight-bold">Resumo do pedido (1 item)</p>
+
+                    <mat-divider inset></mat-divider>
+
+                    <div class="row py-3">
+                        <p>1x Cevich </p>
+                        <p>1x Coca-Cola </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="font-weight-bold">Pagamento</p>
+
+                    <mat-divider inset></mat-divider>
+                    <div class="container">
+                        <div class="row py-3">
+                            <div class="col-md-6">
+                                <div class="float-start">Forma de Pagamento </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end">
+                                    Cartão Débito -
+                                    <img class="cartao-logo" src="../../../../../assets/images/cartoes/visa-logo.png"
+                                        alt="">
+                                    Visa
+                                </div>
+                            </div>
+                        </div>
+
+                        <mat-divider inset></mat-divider>
+
+                        <div class="row py-1">
+                            <div class="col-md-6">
+                                <div class="float-start">Subtotal </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end">
+                                    R$ 47,50
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="float-start">Descontos </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end">
+                                    R$ 00,00
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="float-start">Troco </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end">
+                                    R$ 00,00
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="float-start">Taxa de Entrega </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end">
+                                    R$ 00,00
+                                </div>
+                            </div>
+                        </div>
+                        <mat-divider inset></mat-divider>
+                        <div class="row py-1">
+                            <div class="col-md-6">
+                                <div class="float-start font-weight-bold">Valor Total </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-end font-weight-bold">
+                                    R$ 47,50
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </div>
+    </div>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+        <button mat-raised-button>
+            <div class="text-red">
+                <i class="fa fa-times"></i> {{'DENY_ORDER' | translate}}
+            </div>
+        </button>
+        <button mat-raised-button color="primary">
+            <i class="fa fa-check"></i>
+            {{'ACCEPT_ORDER' | translate}}
+        </button>
+    </mat-card-actions>
+    <mat-card-footer>
+        <footer></footer>
+    </mat-card-footer>
+</mat-card>

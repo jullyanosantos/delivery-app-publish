@@ -1,0 +1,79 @@
+<div class="">
+    <!-- <div class="navbar has-background-dark">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <h1 class="app-name has-gradient-text">kanban</h1>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="board">
+
+        <!-- <div class="board-bar">
+            <p class="board-name">{{ boardItems.name | translate}}</p>
+        </div> -->
+
+        <div class="board-columns" cdkDropListGroup>
+            <div class="row flex-row flex-sm-nowrap py-3">
+                <div class="col-sm-6 col-md-4 col-xl-3" *ngFor="let column of boardItems.columns"
+                    id="column-{{column.id}}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title text-truncate">
+                                <span class="float-start">
+                                    {{ column.name | translate}}
+                                    <span class="badge bg-grey  ms-2">{{column.tasks.length}}</span>
+                                </span>
+                                <i class="float-end" ngClass="{{column.iconClass}}"></i>
+                            </h6>
+
+                            <div class="card-list-items" cdkDropList [cdkDropListData]="column.tasks"
+                                (cdkDropListDropped)="dropEvent($event, column.status - 1)">
+
+                                <div class="card task" ngClass="{{column.cssTaskClass}}"
+                                    *ngFor="let item of column.tasks" id="task-{{item.id}}" cdkDrag matRipple
+                                    [matRippleCentered]="centered" [matRippleDisabled]="disabled"
+                                    [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+                                    [matRippleColor]="color">
+                                    <div class="card-body p-2" (click)="showDetailsEvent(item.id)">
+                                        <div class="card-title">
+                                            <span class="lead font-weight-bold">#{{item.id}}</span>
+                                        </div>
+                                        <div>
+                                            {{item.endereco}}
+                                        </div>
+
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <div class="float-start">
+                                            <i class="fa fa-clock"></i>
+                                            {{item?.data.format("HH:mm:ss")}}
+                                        </div>
+                                        <div class="float-end">
+                                            <!-- <a href="#!" class="card-link">
+                                                <i class="text-dark fa fa-times fa-sm"></i>
+                                            </a>
+                                            <a href="javscript:void(0);" (click)="updateStatusEvent(item, column.status)" class="card-link">
+                                                <i class="text-dark fa fa-check fa-sm"></i>
+                                            </a> -->
+                                            <button matTooltip="Negar pedido" mat-icon-button>
+                                                <i class="text-dark fa fa-times"></i>
+                                            </button>
+
+                                            <button matTooltip="Evoluir pedido" mat-icon-button
+                                            *ngIf="item.status < 4"
+                                                (click)="updateStatusEvent(item, column.status)">
+                                                <i class="fa fa-check"></i>
+                                            </button> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

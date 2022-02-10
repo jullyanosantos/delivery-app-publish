@@ -1,0 +1,293 @@
+.title {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar .img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
+ .rounded-circle{
+  height: 2rem;
+  width: 2rem;
+}
+
+
+
+
+.navbar .navbar-collapse ul li.nav-item-menu a,
+span {
+  // color: #fff !important;
+}
+
+.navbar .topbar-divider {
+  width: 0;
+  border-right: 1px solid #e3e6f0;
+  height: calc(4.375rem - 2rem);
+  margin: auto 1rem;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+ .dropdown-list-image img {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+@media (min-width: 576px) {
+  .navbar .dropdown .dropdown-menu {
+    width: auto;
+    right: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar .dropdown-list {
+    width: 20rem !important;
+  }
+}
+
+.notify-ico {
+  line-height: 2;
+}
+
+.navbar .nav-item .nav-link .badge-counter {
+  position: absolute;
+  transform: scale(0.7);
+  transform-origin: top right;
+  right: 0.25rem;
+  /* margin-top: -0.25rem; */
+}
+
+.dropdown .dropdown-menu .dropdown-header,
+.sidebar .sidebar-heading,
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+
+.dropdown-header {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: #858796;
+  white-space: nowrap;
+}
+
+.navbar .dropdown-list {
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+.navbar .dropdown-list .dropdown-header {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  color: #fff;
+}
+
+.navbar .dropdown-list .dropdown-item {
+  white-space: normal;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-left: 1px solid #e3e6f0;
+  border-right: 1px solid #e3e6f0;
+  border-bottom: 1px solid #e3e6f0;
+  line-height: 1.3rem;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #3a3b45;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.mr-3,
+.mx-3 {
+  margin-right: 1rem !important;
+}
+
+.small,
+small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(90, 92, 105, 0.5);
+  line-height: 46px;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:hover {
+  color: white;
+}
+
+.scroll-to-top:hover {
+  background: #5a5c69;
+}
+
+.scroll-to-top i {
+  font-weight: 800;
+}
+
+@-webkit-keyframes growIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes growIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animated--fade-in {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
+  animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
+}
+
+.navbar .dropdown-list .dropdown-item .dropdown-list-image {
+  position: relative;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.navbar .dropdown-list .dropdown-item .dropdown-list-image .status-indicator {
+  background-color: #eaecf4;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 0.125rem solid #fff;
+}
+
+.navbar .dropdown-list .dropdown-item:active {
+  background-color: #eaecf4;
+  color: #3a3b45;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-user:hover + #userStatusDropdown {
+  display: block;
+}
+
+/* #userStatusDropdown {
+  display: block;
+} */
+#userStatusDropdown:hover {
+  display: block;
+}
+
+.user-status-badge {
+  /* background-color: red;y */
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+  border-radius: 100% !important;
+  border: 0.125rem solid #fff !important;
+  line-height: 0.6;
+}
+
+.header-user-status {
+  margin-top: 24px !important;
+  position: absolute;
+  margin-left: -11px;
+}
+
+.dropdown-list-image {
+  position: relative;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.drop-list-icon
+{
+  margin-left: 10px;
+}

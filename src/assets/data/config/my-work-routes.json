@@ -1,0 +1,14 @@
+[
+
+  {
+    "icon":  "assignment",
+    "route": "work/activities",
+    "title": "ACTIVITIES_LIST_ITEM"
+  },
+  {
+    "icon":  "dashboard",
+    "route": "customers/dashboards",
+    "title": "DASHBOARDS_LIST_ITEM"
+  }
+
+]

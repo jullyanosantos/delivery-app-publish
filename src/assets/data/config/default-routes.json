@@ -1,0 +1,15 @@
+[
+
+    {
+      "icon":  "home",
+      "route": "app/main/home",
+      "title": "HOME"
+    },
+    {
+      "icon":  "list_alt",
+      "route": "app/main/order-panel",
+      "title": "ORDERS"
+    }
+  
+  ]
+  

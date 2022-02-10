@@ -1,0 +1,92 @@
+.card.draggable {
+  margin-bottom: 0.5rem;
+  cursor: grab;
+  border-radius: 6px;
+}
+
+.card.draggable.item-new{
+
+  border-left: 5px solid #0d6efd;
+}
+
+.card.draggable.item-praparing{
+
+  border-left: 5px solid #ffc107;
+}
+
+.card.draggable.item-delivery{
+
+  border-left: 5px solid #0dcaf0;
+}
+
+.card.draggable.item-done{
+
+  border-left: 5px solid #198754;
+}
+
+.droppable {
+  background-color: green;
+  min-height: 120px;
+  margin-bottom: 1rem;
+}
+
+.cdk-drop-list {
+  border: none !important;
+  background: none !important;
+}
+
+.example-container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 25px 25px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .card-list-items {
+    border: solid 1px #ccc;
+    min-height: 60vh;;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+  }
+  
+  .example-box {
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+  }
+  
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-box:last-child {
+    border: none;
+  }
+  
+  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  

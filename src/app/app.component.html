@@ -1,0 +1,100 @@
+<!-- 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">Hidden brand</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="app/main/home" routerLinkActive="active">
+                    <i class="fas fa-home"></i>
+                    <span class="ml-2 d-none d-lg-inline text-gray-600 small">
+                        Home
+                    </span>
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/app/main/acompanhamento-pedido" routerLinkActive="active">Pedidos</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="page-content">
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+    </div>
+</div> 
+ -->
+<!-- 
+ 
+ <mat-drawer-container class="example-container mat-typography" autosize>
+    <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+      <button mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
+        <mat-icon aria-label="Menu">menu</mat-icon>
+      </button>
+  
+      <mat-nav-list>
+        <mat-list-item>
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Management A</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>assignment</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Management B</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>domain</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Management C</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder_shared</mat-icon>
+          <h4 mat-line *ngIf="isExpanded">Management X</h4>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      You cards and screen Contents goes here..
+      Will be pushed towards right on expanding side navbar.
+    </div>
+  </mat-drawer-container>
+ -->
+
+
+<!-- <app-sidebar-nav></app-sidebar-nav> -->
+<!-- <app-header></app-header> -->
+<app-header *ngIf="showSideBar"></app-header>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" #menu opened="true" class="side-bar" autosize fixedTopGap="56" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <app-sidebar *ngIf="showSideBar"></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav style="width:580px" #OrderDetails position="end" mode="over" opened="{{sidebarOrderDetailState}}"
+    (opened)="envarIdParaComponente()" (closed)="sidebarOrderDetailsService.close()">
+    <mat-sidenav-content style="margin-left: 0px;">
+      <app-order-details #orderDetailsView></app-order-details>
+    </mat-sidenav-content>
+  </mat-sidenav>
+
+  <mat-sidenav-content [@onSideNavChange]="sidebarState" style="margin-left: 200px;">
+    <div class="container" style=" height: calc(100vh - 70px);">
+      <alert-message></alert-message>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- <div class="container" style=" height: calc(100vh - 70px);">
+      <div class="page-content">
+        <alert-message></alert-message>
+        <router-outlet></router-outlet>
+      </div>
+    </div> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "descricao": "Hamburguer com Fritas",
+      "valor": 36.00,
+      "endereco": "Rua teste, 23",
+      "data": "2020-03-09T22:18:26.625Z",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "descricao": "Fritas",
+      "valor": 20,
+      "endereco": "Rua teste, 333",
+      "data": "2020-03-09T22:18:25.625Z",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "descricao": "Hamburguer com Fritas",
+      "valor": 36.00,
+      "endereco": "Rua teste, 23",
+      "data": "2020-03-09T22:18:26.625Z",
+      "status": 2
+    }
+  ]
