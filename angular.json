@@ -33,14 +33,14 @@
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/ngx-toastr/toastr.css",
-              "src/assets/lib/freeze-UI/freeze-ui.css"
+              "./src/assets/lib/freeze-UI/freeze-ui.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/lib/freeze-UI/freeze-ui.js",
-              "src/assets/lib/ebs-core-resources/ebs.js",
-              "src/assets/lib/ebs-core-resources/ebs.freeze-ui.js"
+              "./src/assets/lib/freeze-UI/freeze-ui.js",
+              "./src/assets/lib/ebs-core-resources/ebs.js",
+              "./src/assets/lib/ebs-core-resources/ebs.freeze-ui.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
