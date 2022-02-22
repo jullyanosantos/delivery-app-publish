@@ -31,8 +31,9 @@ export class LanguageComponent implements OnInit {
     debugger
     this.selectedLanguage = item;
     this.languageService.changeLanguage(item);
+    
     debugger
-    var alerta = false;
+    var alerta = true;
 
     if (alerta) {
       alert(window.location);
