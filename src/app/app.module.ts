@@ -1,7 +1,8 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, Injector, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from './shared/utils/utils.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,8 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 
 import { ToastrModule } from 'ngx-toastr';
+
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -47,6 +50,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { fakeBackendProvider } from './shared/_helpers';
 import { ErrorInterceptor, JwtInterceptor, appInitializer } from './shared/_helpers';
+import { LanguageComponent } from './shared/componentes/language/language.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -62,13 +66,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarComponent,
     OrderDetailsComponent,
     KanbanBoardComponent,
-    LoginComponent
+    LoginComponent,
+    LanguageComponent
   ],
   imports: [
+    FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgSelectModule,
     UtilsModule,
     ServicesBaseModule,
 

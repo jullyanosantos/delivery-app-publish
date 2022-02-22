@@ -92,7 +92,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
 
-            debugger
             switch (true) {
                 case url.endsWith('/users/authenticate') && method === 'POST':
                     return authenticate();

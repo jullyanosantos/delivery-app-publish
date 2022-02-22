@@ -79,7 +79,7 @@
   <div class="form-container sign-up-container">
     <form action="#">
       <h1>{{ 'REGISTER_LABEL' | translate}}</h1>
-      
+
       <div class="social-container">
         <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -109,6 +109,7 @@
     </form>
   </div>
   <div class="form-container sign-in-container">
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h1>{{'LOGIN_LABEL' | translate}}</h1>
       <div class="social-container">

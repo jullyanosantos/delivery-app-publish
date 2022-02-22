@@ -12,6 +12,8 @@
     "ORDER_DONE_MSG": "Pedido finalizados",
     "USE_ACCOUNT_MSG": "ou use sua conta",
     "WELLCOME_MSG":"Bem-vindo de volta!",
+    "FLAG_ENGLISH": "Inglês",
+    "FLAG_BRAZIL": "Brasil",
 
     "APP_NAME": "Delivery app",
     "APP_TOOLBAR_TITLE": "Delivery app",

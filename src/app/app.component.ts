@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { mainContentAnimation } from './shared/utils/animations';
 import { SidenavService } from './shared/componentes/layout/sidebar/sidenav.service';
 import { OrderDetaisService } from './main/order/order-details/order-details.service';
 import { OrderDetailsComponent } from './main/order/order-details/order-details.component';
+import { AppComponentBase } from './shared/AppComponentBase';
+import { LanguageService } from './shared/componentes/language/language.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ import { OrderDetailsComponent } from './main/order/order-details/order-details.
     mainContentAnimation(),
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent extends AppComponentBase implements OnInit {
   title = 'delivery-app-ui';
 
   sidebarState: string;
@@ -26,11 +28,19 @@ export class AppComponent implements OnInit {
   @ViewChild("orderDetailsView") orderDetailsComponent: OrderDetailsComponent;
 
   constructor(
-    private translate: TranslateService,
+    injector: Injector,
     private sidebarService: SidenavService,
+    private languageService: LanguageService,
     public sidebarOrderDetailsService: OrderDetaisService
   ) {
-    this.translate.setDefaultLang('pt-br');
+
+    super(injector);
+
+    debugger
+
+    var lang = this.languageService.getLanguage();
+
+    this.translateService.use(lang.value);
   }
 
   ngOnInit() {
@@ -52,7 +62,7 @@ export class AppComponent implements OnInit {
   initEvetns() {
 
     this.sidebarService.showSideBar.subscribe((mode: any) => {
-      debugger
+
       this.showSideBar = true;
     });
 
@@ -65,7 +75,7 @@ export class AppComponent implements OnInit {
     return false;
   }
   envarIdParaComponente() {
-  
+
     let id = this.sidebarOrderDetailsService.getIdObservable().value;
     this.orderDetailsComponent.showDetails(id);
   }
@@ -87,7 +97,9 @@ export class AppComponent implements OnInit {
       this.sidebarService.isExpadingMiniSideBar = false;
     }
   }
+
   changeLanguage(language: string) {
-    this.translate.use(language);
+    this.translateService.use(language);
   }
+
 }
