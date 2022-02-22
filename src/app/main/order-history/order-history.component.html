@@ -1,0 +1,26 @@
+<div class="container" [busyIf]="isLoading">
+  <perfect-scrollbar>
+    <div class="container-fluid pt-3">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Data</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <th scope="row">{{order.id}}</th>
+            <td>{{order.descricao}}</td>
+                <td>{{order.valor}}</td>
+                <td>{{order.data}}</td>
+                <td>{{order.status}}</td>
+              </tr>    
+            </tbody>
+          </table>
+    </div>
+</perfect-scrollbar>
+</div>

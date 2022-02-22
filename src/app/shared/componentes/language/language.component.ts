@@ -17,7 +17,6 @@ export class LanguageComponent implements OnInit {
 
   constructor(private languageService: LanguageService) {
 
-    debugger
     this.items = this.languageService.getLanguages();
 
     this.selectedLanguage = this.languageService.getLanguage();
@@ -28,16 +27,10 @@ export class LanguageComponent implements OnInit {
 
   changeLanguage(item) {
 
-    debugger
     this.selectedLanguage = item;
-    this.languageService.changeLanguage(item);
-    
-    debugger
-    var alerta = true;
+    var changed = this.languageService.changeLanguage(item);
 
-    if (alerta) {
-      alert(window.location);
+    if (changed)
       window.location.reload();
-    }
   }
 }

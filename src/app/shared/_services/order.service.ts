@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PedidoService {
+export class OrderService {
 
   orders: Pedido[];
 

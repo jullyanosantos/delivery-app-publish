@@ -33,7 +33,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AlertService, } from '../assets/lib/service-base/alert/alert.service';
 import { SweetAlertService, } from './shared/componentes/sweet-alert/sweet-alert-service'
 
-import { PedidoService } from './shared/_services/pedido.service';
+import { OrderService } from './shared/_services/order.service';
 import { AuthenticationService } from './shared/_services/authentication.service';
 import { HomeComponent } from './main/home/home.component';
 import { OrderPanelComponent } from './main/order/order-panel/order-panel.component';
@@ -51,6 +51,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { fakeBackendProvider } from './shared/_helpers';
 import { ErrorInterceptor, JwtInterceptor, appInitializer } from './shared/_helpers';
 import { LanguageComponent } from './shared/componentes/language/language.component';
+import { OrderHistoryComponent } from './main/order-history/order-history.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -67,7 +68,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     OrderDetailsComponent,
     KanbanBoardComponent,
     LoginComponent,
-    LanguageComponent
+    LanguageComponent,
+    OrderHistoryComponent
   ],
   imports: [
     FormsModule,
@@ -98,7 +100,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AlertService,
     SweetAlertService,
-    PedidoService,
+    OrderService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

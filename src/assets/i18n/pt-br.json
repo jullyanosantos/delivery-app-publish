@@ -1,6 +1,8 @@
 {  
     "HOME":"Home",
     "ORDERS":"Pedidos",
+    "ORDERS-HISTORY":"Histórico Pedidos",
+
     "NEWS_ORDERS_HEADER": "Novos Pedidos",
     "PREPARING_HEADER":"Em Preparo",
     "IN_DELIVERY_HEADER":"Em entrega",

@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Board } from 'src/app/shared/componentes/board-kanban/board';
 import { Column } from 'src/app/shared/componentes/board-kanban/column';
 import { Pedido } from 'src/app/shared/models/pedidos/pedido';
-import { PedidoService } from 'src/app/shared/_services/pedido.service';
+import { OrderService } from 'src/app/shared/_services/order.service';
 import { AppComponentBase } from 'src/app/shared/AppComponentBase';
 import { Injector } from '@angular/core';
 import { OrderDetaisService } from '../order-details/order-details.service';
@@ -30,7 +30,7 @@ export class OrderPanelComponent extends AppComponentBase implements OnInit {
 
   constructor(
     injector: Injector,
-    private pedidoService: PedidoService,
+    private pedidoService: OrderService,
     private orderDetailsService: OrderDetaisService,
 
   ) {

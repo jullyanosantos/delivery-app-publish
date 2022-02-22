@@ -20,9 +20,8 @@ export class LanguageService {
 
         var lang = localStorage.getItem("language");
 
-        if(!lang)
-        {
-            lang = JSON.stringify(this.items.filter(x=> x.id == 1)[0]);
+        if (!lang) {
+            lang = JSON.stringify(this.items.filter(x => x.id == 1)[0]);
         }
 
         return JSON.parse(lang);
@@ -32,14 +31,17 @@ export class LanguageService {
         return this.items;
     }
 
-    changeLanguage(language: any) {
+    changeLanguage(language: any): boolean {
 
-        // var localLang = localStorage.getItem('language');
+        var languageInuUse = this.getLanguage();
 
-        // this.lang = localLang == null ? "pt_br" : localLang;
+        if (languageInuUse.id == language.id)
+            return false;
 
         localStorage.setItem('language', JSON.stringify(language));
 
         this.translateService.use(language.value);
+
+        return true;
     }
 }

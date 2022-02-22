@@ -9,7 +9,11 @@
       "icon":  "list_alt",
       "route": "app/main/order-panel",
       "title": "ORDERS"
-    }
-  
+    },
+    {
+      "icon":  "history",
+      "route": "app/main/order-history",
+      "title": "ORDERS-HISTORY"
+    }  
   ]
   

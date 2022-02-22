@@ -2,7 +2,7 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angul
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Board } from '../board';
 import { Column } from '../column';
-import { PedidoService } from 'src/app/shared/_services/pedido.service';
+import { OrderService } from 'src/app/shared/_services/order.service';
 import { OrderDetaisService } from 'src/app/main/order/order-details/order-details.service';
 import { AppComponentBase } from 'src/app/shared/AppComponentBase';
 
@@ -18,7 +18,7 @@ export class KanbanBoardComponent extends AppComponentBase implements OnInit {
 
   constructor(
     injector: Injector,
-    private pedidoService: PedidoService,
+    private pedidoService: OrderService,
     private orderDetailsService: OrderDetaisService) {
     super(injector);
   }
