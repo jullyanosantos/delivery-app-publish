@@ -1,0 +1,23 @@
+<span class="p-float-label">
+  <p-autoComplete style="width: 100%;" inputId="dropdown" type="search" (onClear)="onClearEvent($event)"
+    [(ngModel)]="selectedValue" [showEmptyMessage]="true" [suggestions]="filteredCustomers"
+    (completeMethod)="filterCustomers($event)" field="nome" (onSelect)="onSearchBarSelect($event)"
+    emptyMessage="Usuário não encontrado" [minLength]="2">
+    
+    <ng-template let-item pTemplate="item">
+      <div class="row">
+        <div class="col-md-10">
+          <a class="d-flex align-items-center">
+            <div class="mr-1">
+              <img src="../../../../assets/images/nopictureuser.png" class="rounded-circle" width="20px" height="20px">
+            </div>
+            <div class="font-weight-bold" style="line-height: 1.5;padding: 5px;">
+              <div class="text-truncate">{{item.nome}}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+  <label for="dropdown">Digite pelo menos 2 caracteres</label>
+</span>

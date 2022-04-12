@@ -61,11 +61,15 @@
 
   <span class="spacer"></span>
 
-  <div>
-    <app-language></app-language>
-  </div>
-  
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+  <app-notificaton></app-notificaton>
+
+  <mat-divider></mat-divider>
+
+  <app-language></app-language>
+
+  <app-profile-settings></app-profile-settings>
+
+  <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
     matTooltip="{{currentUser.username}}">
     <img class="img-profile rounded-circle" src="../../../../../assets//images/nopictureuser.png">
   </button>
@@ -90,5 +94,5 @@
       <i class="fas fa-sign-out-alt fa-fw text-red"></i>
       <span class="drop-list-icon">{{ 'LOG_OUT' | translate }}</span>
     </button>
-  </mat-menu>
+  </mat-menu> -->
 </mat-toolbar>

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Board } from 'src/app/shared/componentes/board-kanban/board';
 import { Column } from 'src/app/shared/componentes/board-kanban/column';
-import { Pedido } from 'src/app/shared/models/pedidos/pedido';
 import { OrderService } from 'src/app/shared/_services/order.service';
 import { AppComponentBase } from 'src/app/shared/AppComponentBase';
 import { Injector } from '@angular/core';
@@ -10,6 +9,7 @@ import { OrderDetaisService } from '../order-details/order-details.service';
 import * as moment from 'moment';
 import { ConfigService } from 'src/app/shared/utils/config/config.service';
 import { first } from 'rxjs/operators';
+import { Pedido } from 'src/app/shared/_models/pedido';
 
 @Component({
   selector: 'app-order-panel',
@@ -79,7 +79,7 @@ export class OrderPanelComponent extends AppComponentBase implements OnInit {
   async initBoard() {
     debugger
 
-
+    console.log(moment());
     // // this.pedidos = this.pedidoService.getOrders(1);
     // this.pedidosEmAndamento = this.pedidoService.getOrders(2);
     // this.pedidosEmEntrega = this.pedidoService.getOrders(3);
@@ -145,7 +145,7 @@ export class OrderPanelComponent extends AppComponentBase implements OnInit {
         event.currentIndex,
       );
       var item = event.previousContainer.data[event.previousIndex];
-      this.updateStatusOrder((<Pedido>item));
+      this.updateStatusOrder(item);
     }
   }
 

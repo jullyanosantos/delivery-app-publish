@@ -107,7 +107,7 @@
 
       <mat-list-item [busyIf]="isLoading" *ngFor="let item of defaultRoutes" mat-list-item (click)="navigationSidenav?.close()"
         [routerLink]="[item.route]" routerLinkActive="list-item-active">
-        <mat-icon matListIcon class="nav-list-icon" [@iconAnimation]="sidebarState"> {{ item.icon }} </mat-icon>
+        <mat-icon matListIcon class="nav-list-icon" [@iconAnimation]="sidebarState">{{item.icon}}</mat-icon>
         <span class="label" [@labelAnimation]="sidebarState">{{item.title}}</span>
       </mat-list-item>
 

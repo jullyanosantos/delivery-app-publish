@@ -1,7 +1,7 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BehaviorSubject } from 'rxjs';
-import { Pedido } from 'src/app/shared/models/pedidos/pedido';
+import { Pedido } from 'src/app/shared/_models/pedido';
 
 @Injectable({
     providedIn: 'root'

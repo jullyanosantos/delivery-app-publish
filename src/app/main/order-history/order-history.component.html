@@ -1,26 +1,184 @@
-<div class="container" [busyIf]="isLoading">
-  <perfect-scrollbar>
-    <div class="container-fluid pt-3">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Data</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of orders">
-            <th scope="row">{{order.id}}</th>
-            <td>{{order.descricao}}</td>
-                <td>{{order.valor}}</td>
-                <td>{{order.data}}</td>
-                <td>{{order.status}}</td>
-              </tr>    
-            </tbody>
-          </table>
+<div class="card shadow mt-2" [busyIf]="dataTableHelperUsers.isLoading">
+  <div class="card-header d-flex justify-content-between align-items-center">
+
+    <div class="row">
+      <div class="col-md-3">
+        <i class="pi pi-filter"></i>
+      </div>
+      <div class="col-md-9">
+        <h6 class="font-weight-bold text-primary">
+          {{'FILTER' | translate}}</h6>
+      </div>
     </div>
-</perfect-scrollbar>
+  </div>
+
+  <div class="card-body">
+    <div class="row p-fluid grid mt-2">
+      <div class="col-md-6">
+        <app-search-user-autocomplete (searchBarChangeEmitter)="selectItem($event)" (onClearEmitter)="onClear($event)">
+        </app-search-user-autocomplete>
+
+        <!-- <span class="p-float-label">
+          <input id="float-input" type="text" class="form-control" pInputText>
+          <label for="float-input">Nome do Cliente</label>
+        </span> -->
+      </div>
+
+      <div class="col-md-6">
+        <span class="p-float-label">
+          <p-dropdown inputId="dropdown" [showClear]="true" [autoDisplayFirst]="false" [options]="items"
+            [(ngModel)]="filters.status" optionLabel="name" (onChange)="getOrdersHistory($event)">
+
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="filters.status">
+                <span *ngIf="filters.status.id == 1">
+                  <span class="badge bg-primary">{{'NEW_ORDER' | translate}}</span>
+                </span>
+                <span *ngIf="filters.status.id == 2">
+                  <span class="badge bg-warning text-dark">{{'PREPARING_HEADER' | translate}}</span>
+                </span>
+                <span *ngIf="filters.status.id == 3">
+                  <span class="badge bg-info text-dark">{{'IN_DELIVERY_HEADER' | translate}}</span>
+                </span>
+                <span *ngIf="filters.status.id == 4">
+                  <span class="badge bg-success">{{'DONE' | translate}}</span>
+                </span>
+              </div>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-record>
+              <span *ngIf="record.id == 1">
+                <span class="badge bg-primary">{{'NEW_ORDER' | translate}}</span>
+              </span>
+              <span *ngIf="record.id == 2">
+                <span class="badge bg-warning text-dark">{{'PREPARING_HEADER' | translate}}</span>
+              </span>
+              <span *ngIf="record.id == 3">
+                <span class="badge bg-info text-dark">{{'IN_DELIVERY_HEADER' | translate}}</span>
+              </span>
+              <span *ngIf="record.id == 4">
+                <span class="badge bg-success">{{'DONE' | translate}}</span>
+              </span>
+            </ng-template>
+          </p-dropdown>
+          <label for="dropdown">Status</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card shadow mt-2" [busyIf]="dataTableHelperUsers.isLoading">
+  <div class="card-header d-flex flex-row align-items-center justify-content-between">
+    <div class="row">
+      <div class="col-md-2">
+        <i class="pi pi-history"></i>
+      </div>
+      <div class="col-md-10">
+        <h6 class="font-weight-bold text-primary">
+          {{'ORDERS-HISTORY' | translate}}</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="dropdown no-arrow col-md-3" style="text-align: right;">
+        <button pButton pRipple type="button" icon="pi pi-sync" matTooltip="Atuaizar" (click)="getOrdersHistory($event)"
+          class="icon-effect-rotate p-button-rounded p-button-secondary p-button-text"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Body -->
+  <div class="card-body">
+    <div class="row">
+      <div class="primeng-datatable-container" [busyIf]="dataTableHelperUsers.isLoading">
+        <p-table #dataTableUsers styleClass="p-datatable-sm" (onLazyLoad)="getOrdersHistory($event)"
+          selectionMode="single" dataKey="id" [value]="dataTableHelperUsers.records"
+          rows="{{dataTableHelperUsers.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+          [scrollable]="true" ScrollWidth="100%" [responsive]="dataTableHelperUsers.isResponsive"
+          [resizableColumns]="dataTableHelperUsers.resizableColumns">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>{{'ORDER' | translate}}</th>
+              <th pSortableColumn="descricao">
+                {{'CUSTOMER' | translate}}
+                <p-sortIcon field="cliente"></p-sortIcon>
+              </th>
+              <th pSortableColumn="valor">
+                {{'VALUE' | translate}}
+                <p-sortIcon field="valor"></p-sortIcon>
+              </th>
+              <th>
+                Data
+              </th>
+              <th>Status</th>
+              <th>
+                {{'ACTIONS' | translate}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-record>
+            <tr [pSelectableRow]="record">
+              <td>
+                <span>#{{record.id}}</span>
+              </td>
+              <td>
+                <span class="text-truncate-ellipsis">{{record.cliente}}</span>
+              </td>
+              <td>
+                <span>{{record.valor | currency:'BRL'}}</span>
+              </td>
+              <td>
+                <span>{{record.data | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+              </td>
+              <td>
+                <span *ngIf="record.status == 1">
+                  <span class="badge bg-primary">{{'NEW_ORDER' | translate}}</span>
+                </span>
+                <span *ngIf="record.status == 2">
+                  <span class="badge bg-warning text-dark">{{'PREPARING_HEADER' | translate}}</span>
+                </span>
+                <span *ngIf="record.status == 3">
+                  <span class="badge bg-info text-dark">{{'IN_DELIVERY_HEADER' | translate}}</span>
+                </span>
+                <span *ngIf="record.status == 4">
+                  <span class="badge bg-success">{{'DONE' | translate}}</span>
+                </span>
+              </td>
+              <td>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <span>
+                      <i class="fas fa-pencil-alt"></i>
+                      {{'DETAILS' | translate}}
+                    </span>
+                  </button>
+                </mat-menu>
+              </td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+        <div class="primeng-no-data" *ngIf="dataTableHelperUsers.totalRecordsCount == 0">
+          {{'NO_DATA' | translate}}
+        </div>
+        <div class="primeng-paging-container">
+          <span class="total-records-count" *ngIf="dataTableHelperUsers.totalRecordsCount > 0">
+            {{'TotalRecordsCount' | localize:dataTableHelperUsers.totalRecordsCount}}
+            {{'SHOWING_PAGE' | translate}} {{pagedResult.pageNumber}} {{'OF' | translate}} {{pagedResult.totalPages}}
+            ({{pagedResult.totalItems}} {{'ENTRIES' | translate}})
+          </span>
+          <div class="paginator">
+            <p-paginator #paginatorOrderHistory [rows]="dataTableHelperUsers.defaultRecordsCountPerPage"
+              (onPageChange)="getOrdersHistory($event)" [totalRecords]="dataTableHelperUsers.totalRecordsCount"
+              [rowsPerPageOptions]="dataTableHelperUsers.predefinedRecordsCountPerPage">
+            </p-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

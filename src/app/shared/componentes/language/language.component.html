@@ -6,12 +6,15 @@
   </ng-option>
 </ng-select> -->
 
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" matTooltip="">
-  <img class="" width="25" height="25" loading="lazy" src="../../../../assets//images//flags/{{selectedLanguage.image}}">
-</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item *ngFor="let item of items" (click)="changeLanguage(item)">
-    <img class="" width="25" height="25" src="../../../../assets//images//flags/{{item.image}}" alt="">
-    <span class="drop-list-icon"> {{ item.name | translate }}</span>
+<div class="nav-item dropdown">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" matTooltip="">
+    <img class="" width="20" height="20" loading="lazy"
+      src="../../../../assets//images//flags/{{selectedLanguage.image}}">
   </button>
-</mat-menu>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let item of items" (click)="changeLanguage(item)">
+      <img class="" width="25" height="25" src="../../../../assets//images//flags/{{item.image}}" alt="">
+      <span class="drop-list-icon"> {{ item.name | translate }}</span>
+    </button>
+  </mat-menu>
+</div>

@@ -6,6 +6,7 @@ import { OrderDetaisService } from './main/order/order-details/order-details.ser
 import { OrderDetailsComponent } from './main/order/order-details/order-details.component';
 import { AppComponentBase } from './shared/AppComponentBase';
 import { LanguageService } from './shared/componentes/language/language.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -31,16 +32,14 @@ export class AppComponent extends AppComponentBase implements OnInit {
     injector: Injector,
     private sidebarService: SidenavService,
     private languageService: LanguageService,
-    public sidebarOrderDetailsService: OrderDetaisService
+    public sidebarOrderDetailsService: OrderDetaisService,
+    private primengConfig: PrimeNGConfig
   ) {
 
     super(injector);
-
-    debugger
-
     var lang = this.languageService.getLanguage();
-
     this.translateService.use(lang.value);
+    this.primengConfig.ripple = true;
   }
 
   ngOnInit() {
@@ -101,5 +100,4 @@ export class AppComponent extends AppComponentBase implements OnInit {
   changeLanguage(language: string) {
     this.translateService.use(language);
   }
-
 }

@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                 alert(this.router.routerState.snapshot.url);
                 
-                this.authenticationService.logout();
+                this.authenticationService.logout(this.router.routerState.snapshot.url);
             }
 
             const error = err.error.message || err.message || err.statusText;

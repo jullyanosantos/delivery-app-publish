@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AutoFocusDirective } from '././directives/auto-focus.directive';
 import { BusyIfDirective } from '././directives/busy-if.directive';
 import { ButtonBusyDirective } from '././directives/button-busy.directive'
-
+import {LocalizePipe } from './pipes/localize.pipe'
 @NgModule({
     imports: [
         CommonModule
@@ -12,12 +12,14 @@ import { ButtonBusyDirective } from '././directives/button-busy.directive'
     declarations: [
         ButtonBusyDirective,
         AutoFocusDirective,
-        BusyIfDirective
+        BusyIfDirective,
+        LocalizePipe
     ],
     exports: [
         ButtonBusyDirective,
         AutoFocusDirective,
-        BusyIfDirective
+        BusyIfDirective,
+        LocalizePipe
     ]
 })
 export class UtilsModule { }

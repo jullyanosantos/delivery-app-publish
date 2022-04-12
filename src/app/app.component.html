@@ -78,7 +78,8 @@
     <app-sidebar *ngIf="showSideBar"></app-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav style="width:580px" #OrderDetails position="end" mode="over" opened="{{sidebarOrderDetailState}}"
+  <mat-sidenav style="width:580px" [ngStyle]="{display: !sidebarOrderDetailState ? 'none' : 'block' }"
+  #OrderDetails position="end" mode="over" opened="{{sidebarOrderDetailState}}"
     (opened)="envarIdParaComponente()" (closed)="sidebarOrderDetailsService.close()">
     <mat-sidenav-content style="margin-left: 0px;">
       <app-order-details #orderDetailsView></app-order-details>
@@ -87,6 +88,7 @@
 
   <mat-sidenav-content [@onSideNavChange]="sidebarState" style="margin-left: 200px;">
     <div class="container" style=" height: calc(100vh - 70px);">
+      <app-breadcrumb></app-breadcrumb>
       <alert-message></alert-message>
       <router-outlet></router-outlet>
     </div>

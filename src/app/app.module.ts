@@ -22,9 +22,14 @@ import { AngularMaterialModule } from './shared/utils/angular-material/angular-m
 // import { DragDropModule } from 'primeng/dragdrop';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import {TooltipModule} from 'primeng/tooltip';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 import { ToastrModule } from 'ngx-toastr';
-
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -52,6 +57,10 @@ import { fakeBackendProvider } from './shared/_helpers';
 import { ErrorInterceptor, JwtInterceptor, appInitializer } from './shared/_helpers';
 import { LanguageComponent } from './shared/componentes/language/language.component';
 import { OrderHistoryComponent } from './main/order-history/order-history.component';
+import { NotificatonComponent } from './shared/componentes/notificaton/notificaton.component';
+import { ProfileSettingsComponent } from './shared/componentes/profile-settings/profile-settings.component';
+import { BreadcrumbComponent } from './shared/componentes/breadcrumb/breadcrumb.component';
+import { SearchUserAutocompleteComponent } from './shared/componentes/search-user-autocomplete/search-user-autocomplete.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -69,7 +78,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     KanbanBoardComponent,
     LoginComponent,
     LanguageComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    NotificatonComponent,
+    ProfileSettingsComponent,
+    BreadcrumbComponent,
+    SearchUserAutocompleteComponent
   ],
   imports: [
     FormsModule,
@@ -85,7 +98,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     // DragDropModule,
     PanelModule,
     TableModule,
+    PaginatorModule,
+    
     AngularMaterialModule,
+    
+    ButtonModule,
+    RippleModule,
+    TooltipModule,
+    BreadcrumbModule,
+    AutoCompleteModule,
+    
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

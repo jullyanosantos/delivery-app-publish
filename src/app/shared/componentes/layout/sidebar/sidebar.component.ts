@@ -82,25 +82,25 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   async loadNavListItems() {
 
-    this.myWorkRoutes = await this.configService.get(MY_WORK_ROUTES);
+    // this.myWorkRoutes = await this.configService.get(MY_WORK_ROUTES);
 
-    this.myWorkRoutes.forEach(route => {
+    // this.myWorkRoutes.forEach(route => {
 
-      this.translate.get(route.title).subscribe(value => {
-        route.title = value;
-      });
+    //   this.translate.get(route.title).subscribe(value => {
+    //     route.title = value;
+    //   });
 
-    });
+    // });
 
-    this.customerRoutes = await this.configService.get(CUSTOMER_ROUTES);
+    // this.customerRoutes = await this.configService.get(CUSTOMER_ROUTES);
 
-    this.customerRoutes.forEach(route => {
+    // this.customerRoutes.forEach(route => {
 
-      this.translate.get(route.title).subscribe(value => {
-        route.title = value;
-      });
+    //   this.translate.get(route.title).subscribe(value => {
+    //     route.title = value;
+    //   });
 
-    });
+    // });
 
     this.defaultRoutes = await this.configService.get(DEFAULT_ROUTES);
     this.defaultRoutes.forEach(r => {
@@ -110,36 +110,36 @@ export class SidebarComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.salesRoutes = await this.configService.get(SALES_ROUTES);
+    // this.isLoading = false;
+    // this.salesRoutes = await this.configService.get(SALES_ROUTES);
 
-    this.salesRoutes.forEach(route => {
+    // this.salesRoutes.forEach(route => {
 
-      this.translate.get(route.title).subscribe(value => {
-        route.title = value;
-      });
+    //   this.translate.get(route.title).subscribe(value => {
+    //     route.title = value;
+    //   });
 
-    });
+    // });
 
-    this.collateralRoutes = await this.configService.get(COLLATERAL_ROUTES);
+    // this.collateralRoutes = await this.configService.get(COLLATERAL_ROUTES);
 
-    this.collateralRoutes.forEach(route => {
+    // this.collateralRoutes.forEach(route => {
 
-      this.translate.get(route.title).subscribe(value => {
-        route.title = value;
-      });
+    //   this.translate.get(route.title).subscribe(value => {
+    //     route.title = value;
+    //   });
 
-    });
+    // });
 
-    this.toolsRoutes = await this.configService.get(TOOLS_ROUTES);
+    // this.toolsRoutes = await this.configService.get(TOOLS_ROUTES);
 
-    this.toolsRoutes.forEach(route => {
+    // this.toolsRoutes.forEach(route => {
 
-      this.translate.get(route.title).subscribe(value => {
-        route.title = value;
-      });
+    //   this.translate.get(route.title).subscribe(value => {
+    //     route.title = value;
+    //   });
 
-    });
-
+    // });
   }
 
   protected subscribe() {

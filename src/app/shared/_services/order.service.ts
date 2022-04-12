@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Pedido } from '../models/pedidos/pedido';
 import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { PagedResult } from '../_models/paged-result';
+import { Pedido } from '../_models/pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,32 @@ export class OrderService {
 
     return this.http.get<any>(url)
       .pipe(map(result => {
+        debugger
+        return result;
+      }));
+  }
+
+  getAll(filter: string | null | undefined, status: number | null | undefined, pageNumber: number | null | undefined, pageSize: number | null | undefined, sortBy: string | null | undefined) {
+
+    debugger
+    let url = `${environment.apiUrl}/getOrdersPaginated?`;
+
+    if (filter != undefined)
+      url += "Filtro=" + encodeURIComponent("" + filter) + "&";
+    if (pageNumber != undefined)
+      url += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+    if (pageSize != undefined)
+      url += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
+    if (sortBy != undefined)
+      url += "SortBy=" + encodeURIComponent("" + sortBy) + "&";
+    if (status != undefined)
+      url += "status=" + encodeURIComponent("" + status) + "&";
+
+    url = url.replace(/[?&]$/, "");
+
+    return this.http.get<PagedResult<Pedido>>(url)
+      .pipe(map(result => {
+        debugger
         return result;
       }));
   }

@@ -3,6 +3,7 @@
     "ORDERS":"Pedidos",
     "ORDERS-HISTORY":"Histórico Pedidos",
 
+    "NEW_ORDER": "Novo",
     "NEWS_ORDERS_HEADER": "Novos Pedidos",
     "PREPARING_HEADER":"Em Preparo",
     "IN_DELIVERY_HEADER":"Em entrega",
@@ -16,6 +17,19 @@
     "WELLCOME_MSG":"Bem-vindo de volta!",
     "FLAG_ENGLISH": "Inglês",
     "FLAG_BRAZIL": "Brasil",
+    "DETAILS": "Detalhes",
+    "NO_DATA": "Sem dados para sua consulta",
+    "SHOWING_PAGE": "Exibindo página",
+    "OF":"de",
+    "ENTRIES": "registros",
+    "ORDER":"Pedido",
+    "ACTIONS":"Ações",
+    "DONE":"Finalizado",
+    "FILTER":"Filtro",
+    "CUSTOMER":"Cliente",
+
+    "DESCRIPTION": "Descrição",
+    "VALUE": "Valor",
 
     "APP_NAME": "Delivery app",
     "APP_TOOLBAR_TITLE": "Delivery app",

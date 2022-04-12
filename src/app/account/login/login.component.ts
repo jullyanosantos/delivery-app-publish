@@ -47,7 +47,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/app/main/order-panel';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -87,6 +87,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          debugger
           this.router.navigate([this.returnUrl]);
         },
         error => {

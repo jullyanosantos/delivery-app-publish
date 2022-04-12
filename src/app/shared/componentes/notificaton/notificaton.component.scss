@@ -1,0 +1,289 @@
+
+  .rounded-circle{
+    height: 2rem;
+    width: 2rem;
+  }
+
+// .ringing-bell {
+    //   position: absolute;
+    //   left: 50%;
+    //   top: 50%;
+    //   transition: translate(-50%, -50%)
+    // }
+    
+    
+    .notification {}
+    
+    .notification-dropdown {
+        min-width: 320px
+    }
+    
+    .notification-dropdown,
+    .connection-dropdown,
+    .nav-user-dropdown {
+        padding: 0px;
+        margin: 0px
+    }
+    
+    .notification-title {
+        font-size: 14px;
+        color: #3d405c;
+        text-align: center;
+        padding: 8px 0px;
+        border-bottom: 1px solid #e3e3e3;
+        line-height: 1.5;
+        background-color: #fffffe
+    }
+    
+    .notification-list {}
+    
+    .notification-list .list-group-item {
+        border-radius: 0px;
+        padding: 12px;
+        margin-top: -1px;
+        border-left: transparent;
+        border-right: transparent;
+        border: solid 1px #e1e1e7;
+    }
+    
+    .notification-list .list-group-item.active {
+        z-index: 2;
+        color: #3d405c;
+        background-color: #f7f7fb;
+        border-color: #e1e1e7
+    }
+    
+    .notification-list .list-group-item-action:focus,
+    .list-group-item-action:hover {
+        color: #404040;
+        text-decoration: none;
+        background-color: #f7f7fb
+    }
+    
+    .notification-list .list-group-item:last-child {}
+    
+    .notification-info {}
+    
+    .notification-info .notification-date {
+        display: block;
+        font-size: 11px;
+        margin-top: 4px;
+        text-transform: uppercase;
+        color: #71748d
+    }
+    
+    .notification-list-user-img {
+      float: left
+    }
+    
+    .notification-list-user-block {
+      padding-left: 50px;
+      font-size: 14px;
+      line-height: 21px
+    }
+    
+    .notification-list-user-name {
+      color: #5969ff;
+      font-size: 14px;
+      margin-right: 8px
+    }
+    
+    .list-footer,
+    .conntection-footer {
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0px;
+      line-height: 1.5;
+      font-weight: 700;
+      background-color: #5969ff;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px
+    }
+    
+    .list-footer a,
+    .conntection-footer a {
+      color: #fff
+    }
+    
+    .list-footer a:hover,
+    .conntection-footer a:hover {
+      color: #fff
+    }
+    
+    .indicator {
+    
+      content: "";
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        display: inline-block;
+        width: 11px;
+        height: 12px;
+        border-radius: 100%;
+        background-color: #ef172c;
+          animation: 0.9s infinite beatHeart;
+        transform-origin: center;
+    }
+    
+    
+    @keyframes beatHeart {
+      0% {
+          transform: scale(0.9)
+      }
+    
+      25% {
+          transform: scale(1.1)
+      }
+    
+      40% {
+          transform: scale(0.9)
+      }
+    
+      60% {
+          transform: scale(1.1)
+      }
+    
+      100% {
+          transform: scale(0.9)
+      }
+    }
+    
+    .faa-ring {
+      // color: red
+    }
+    
+    @-webkit-keyframes ring {
+      0% {
+          -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg)
+      }
+    
+      2% {
+          -webkit-transform: rotate(15deg);
+          transform: rotate(15deg)
+      }
+    
+      4% {
+          -webkit-transform: rotate(-18deg);
+          transform: rotate(-18deg)
+      }
+    
+      6% {
+          -webkit-transform: rotate(18deg);
+          transform: rotate(18deg)
+      }
+    
+      8% {
+          -webkit-transform: rotate(-22deg);
+          transform: rotate(-22deg)
+      }
+    
+      10% {
+          -webkit-transform: rotate(22deg);
+          transform: rotate(22deg)
+      }
+    
+      12% {
+          -webkit-transform: rotate(-18deg);
+          transform: rotate(-18deg)
+      }
+    
+      14% {
+          -webkit-transform: rotate(18deg);
+          transform: rotate(18deg)
+      }
+    
+      16% {
+          -webkit-transform: rotate(-12deg);
+          transform: rotate(-12deg)
+      }
+    
+      18% {
+          -webkit-transform: rotate(12deg);
+          transform: rotate(12deg)
+      }
+    
+      20% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg)
+      }
+    }
+    
+    @keyframes ring {
+      0% {
+          -webkit-transform: rotate(-15deg);
+          -ms-transform: rotate(-15deg);
+          transform: rotate(-15deg)
+      }
+    
+      2% {
+          -webkit-transform: rotate(15deg);
+          -ms-transform: rotate(15deg);
+          transform: rotate(15deg)
+      }
+    
+      4% {
+          -webkit-transform: rotate(-18deg);
+          -ms-transform: rotate(-18deg);
+          transform: rotate(-18deg)
+      }
+    
+      6% {
+          -webkit-transform: rotate(18deg);
+          -ms-transform: rotate(18deg);
+          transform: rotate(18deg)
+      }
+    
+      8% {
+          -webkit-transform: rotate(-22deg);
+          -ms-transform: rotate(-22deg);
+          transform: rotate(-22deg)
+      }
+    
+      10% {
+          -webkit-transform: rotate(22deg);
+          -ms-transform: rotate(22deg);
+          transform: rotate(22deg)
+      }
+    
+      12% {
+          -webkit-transform: rotate(-18deg);
+          -ms-transform: rotate(-18deg);
+          transform: rotate(-18deg)
+      }
+    
+      14% {
+          -webkit-transform: rotate(18deg);
+          -ms-transform: rotate(18deg);
+          transform: rotate(18deg)
+      }
+    
+      16% {
+          -webkit-transform: rotate(-12deg);
+          -ms-transform: rotate(-12deg);
+          transform: rotate(-12deg)
+      }
+    
+      18% {
+          -webkit-transform: rotate(12deg);
+          -ms-transform: rotate(12deg);
+          transform: rotate(12deg)
+      }
+    
+      20% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg)
+      }
+    }
+    
+    .faa-ring.animated,
+    .faa-ring.animated-hover:hover,
+    .faa-parent.animated-hover:hover>.faa-ring {
+      -webkit-animation: ring 2s ease infinite;
+      animation: ring 2s ease infinite;
+      transform-origin-x: 50%;
+      transform-origin-y: 0px;
+      transform-origin-z: initial
+    }

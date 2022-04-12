@@ -1,16 +1,21 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { ConfigService } from '../../shared/utils/config/config.service';
 import { User } from '../_models/user';
-import { Pedido } from '../_models/pedidos/pedido';
 import * as moment from 'moment';
+import { PagedResult } from '../_models/paged-result';
+import { Customer } from '../_models/customer';
+import * as ordersData from '../../../assets/data/repositories/orders.json';
+import * as customersData from '../../../assets/data/repositories/customers.json';
+import { Pedido } from '../_models/pedido';
 
 // array in local storage for users
 const usersKey = 'angular-10-jwt-refresh-token-users';
 const users = JSON.parse(localStorage.getItem(usersKey)) || [];
 let orders: Pedido[] = [];
+let customers: Customer[] = [];
 
 if (!users.length) {
 
@@ -24,60 +29,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     constructor(
         private injector: Injector,
         private configService: ConfigService) {
-
-        orders = [
-            {
-                "id": 1,
-                "descricao": "Hamburguer com Fritas",
-                "valor": 36.00,
-                "endereco": "Rua teste, 23",
-                "data": moment(),
-                "status": 1,
-                "items": []
-            },
-            {
-                "id": 2,
-                "descricao": "Fritas",
-                "valor": 20,
-                "endereco": "Rua teste, 333",
-                "data": moment(),
-                "status": 1,
-                "items": []
-            },
-            {
-                "id": 3,
-                "descricao": "Hamburguer com Fritas",
-                "valor": 36.00,
-                "endereco": "Rua teste, 23",
-                "data": moment(),
-                "status": 2,
-                "items": []
-            },
-            {
-                "id": 4,
-                "descricao": "Hamburguer com Fritas",
-                "valor": 36.00,
-                "endereco": "Rua teste, 23",
-                "data": moment(),
-                "status": 4,
-                "items": []
-            },
-            {
-                "id": 5,
-                "descricao": "Hamburguer com Fritas",
-                "valor": 36.00,
-                "endereco": "Rua teste, 23",
-                "data": moment(),
-                "status": 3,
-                "items": []
-            }
-        ];
-        // this.loadUsers();
-    }
-
-    async loadUsers() {
-        debugger
-        // this.users = await this.configService.get("users");
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -93,6 +44,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function handleRoute() {
 
             switch (true) {
+
                 case url.endsWith('/users/authenticate') && method === 'POST':
                     return authenticate();
                 case url.endsWith('/users/register') && method === 'POST':
@@ -105,6 +57,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUsers();
                 case url.endsWith('/orders') && method === 'GET':
                     return getOrders();
+                case url.match(/(\/getOrdersPaginated?[^?]*?)\?.*/) && method === 'GET':
+                    //return of(new HttpResponse({ status: 200, body: ((data) as any).default }))
+                    return getOrdersPaginated();
+                case url.match(/(\/filterUserCombo?[^?]*?)\?.*/) && method === 'GET':
+                    return filterUserCombo();
                 case url.match(/\/orders\/\d+$/) && method === 'GET':
                     return getOrderById();
                 default:
@@ -211,10 +168,122 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             return ok(order);
         }
+
         function getOrders() {
+
+            var orderList = ((ordersData) as any).default.data;
+
+            orderList.forEach(element => {
+                element.data = moment()
+            });
+
+            return ok(orderList);
+        }
+
+        function parseQuerystring() {
+            var foo = url.split('?')[1].split('#')[0].split('&');
+            var dict = {};
+            var elem = [];
+            for (var i = foo.length - 1; i >= 0; i--) {
+                elem = foo[i].split('=');
+                dict[elem[0]] = elem[1];
+            };
+            return dict;
+        };
+
+        function filterUserCombo() {
+
+            var customersAux = customers;
+
+            const params = parseQuerystring() as any;
+            var filter = params.filter != undefined ? params.filter : undefined
+
+            if (params.filter != undefined && params.filter != "") {
+                customersAux = customers.filter(x => x.nome == filter);
+            }
+
+            return ok(customersAux)
+        }
+
+        function getOrdersPaginated() {
+
+            var ordersAux = ((ordersData) as any).default.data;
             debugger
-            // return ok(orders.filter(x => x.status == idFromUrl()));
-            return ok(orders);
+            var custoemrDb = ((customersData) as any).default.data;
+
+            ordersAux.forEach(element => {
+                debugger
+                element.data = moment();
+                element.cliente = custoemrDb.find(x=> x.id == element.clienteId).nome;
+            });
+
+            const params = parseQuerystring() as any;
+
+            var pageNumber = parseInt(params.PageNumber);
+            var pageSize = parseInt(params.PageSize);
+            var sortBy = params.SortBy != undefined ? params.SortBy : "id";
+            var status = params.status != undefined ? params.status : undefined
+            var clienteId = params.Filtro != undefined ? params.Filtro : undefined
+
+            if (params.status != undefined && params.status != 0) {
+                ordersAux = ordersAux.filter(x => x.status == status);
+            }   
+            debugger
+            if (clienteId != undefined) {
+                ordersAux = ordersAux.filter(x => x.clienteId == clienteId);
+            }
+
+            var total = ordersAux.length;
+            var ordersArray = paginate(ordersAux, pageSize, pageNumber);
+
+            ordersArray.sort(dynamicSort(sortBy));
+
+            var pagedResult = new PagedResult<Pedido>();
+            pagedResult.list = ordersArray;
+            pagedResult.totalItems = total;
+            pagedResult.pageNumber = pageNumber;
+            pagedResult.pageSize = pageSize;
+            pagedResult.totalPages = Math.ceil(total / pageSize);
+            pagedResult.hasPreviousPage = pageNumber > 1;
+            pagedResult.hasNextPage = pageNumber < pagedResult.totalPages;
+
+            return ok(pagedResult);
+        }
+
+        function paginate(array, page_size, page_number) {
+
+            // page_number = page_number > 2 ? page_number - 1 : page_number;
+            array = array.slice((page_number - 1) * page_size, page_number * page_size);
+
+            return array;
+        }
+
+        function paginate2(array, size, index) {
+            // transform values
+            index = Math.abs(parseInt(index));
+            index = index > 0 ? index - 1 : index;
+            size = parseInt(size);
+            size = size < 1 ? 1 : size;
+
+            // filter
+            return [...(array.filter((value, n) => {
+                return (n >= (index * size)) && (n < ((index + 1) * size))
+            }))]
+        }
+
+        function dynamicSort(property) {
+            var sortOrder = 1;
+            if (property[0] === "-") {
+                sortOrder = -1;
+                property = property.substr(1);
+            }
+            return function (a, b) {
+                /* next line works with strings and numbers, 
+                 * and you may want to customize it to your needs
+                 */
+                var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                return result * sortOrder;
+            }
         }
 
         // helper functions
