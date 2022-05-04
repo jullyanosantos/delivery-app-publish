@@ -65,8 +65,6 @@ export class OrderService {
       .pipe(map(result => {
 
         let pedido: Pedido;
-
-        debugger
         if (result)
           pedido = result[0];
 

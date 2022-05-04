@@ -11,7 +11,7 @@ export class SidenavService {
 
   public showSideBar: EventEmitter<any> = new EventEmitter();
   public hideSideBar: EventEmitter<any> = new EventEmitter();
-  
+
   private sidenav: MatSidenav;
   private opened = false;
   private sidebarState = 'open';
@@ -43,18 +43,25 @@ export class SidenavService {
   }
 
   public open() {
-    
+
     // this.opened = true;
     this.sidebarState = "open";
     this.sidebarStateChanged$.next(this.sidebarState);
+
+    if (this.isExpadingMiniSideBar)
+      this.isMiniSidebar = false;
+
     // return this.sidenav.open();
   }
 
   public close() {
-    
+
     // this.opened = false;
     this.sidebarState = "close";
     this.sidebarStateChanged$.next(this.sidebarState);
+
+    if (!this.isExpadingMiniSideBar)
+      this.isMiniSidebar = true;
     // return this.sidenav.close();
   }
 
@@ -64,7 +71,7 @@ export class SidenavService {
   // }
 
   toggle() {
-    
+
     if (this.sidebarState == "open") {
       this.sidebarState = "close";
       this.isMiniSidebar = true;

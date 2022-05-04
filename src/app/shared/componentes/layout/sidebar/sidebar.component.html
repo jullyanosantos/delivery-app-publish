@@ -1,110 +1,6 @@
-<!-- <toolbar-navigation *ngIf="isAuthenticated()" (toggleSidenav)="navigationSidenav.toggle()">
-</toolbar-navigation> -->
-
-<!--
-<mat-sidenav-container autosize>
-
-  <mat-sidenav #navigationSidenav mode="over" role="navigation">
-
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <h2 class="toolbar-title"> {{ 'APP_TOOLBAR_TITLE' | translate }} </h2>
-      </mat-toolbar-row>
-    </mat-toolbar>
-
-    <mat-nav-list>
-
-      <ng-container *ngIf="myWorkRoutes">
-
-        <h2 matSubheader> {{ 'MY_WORK_SUB_HEADER' | translate }} </h2>
-
-        <a mat-list-item routerLink="/" style="height: 0;"></a>
-
-        <a *ngFor="let item of myWorkRoutes"
-           mat-list-item
-           (click)="navigationSidenav.close()"
-           [routerLink]="[item.route]"
-           routerLinkActive="list-item-active">
-          <mat-icon matListIcon class="nav-list-icon"> {{ item.icon }} </mat-icon>
-          {{item.title}}
-        </a>
-
-        <mat-divider></mat-divider>
-
-      </ng-container>
-
-      <ng-container *ngIf="customerRoutes">
-
-        <h2 matSubheader> {{ 'CUSTOMERS_SUB_HEADER' | translate }} </h2>
-
-        <a *ngFor="let item of customerRoutes"
-           mat-list-item
-           (click)="navigationSidenav.close()"
-           [routerLink]="[item.route]"
-           routerLinkActive="list-item-active">
-          <mat-icon matListIcon class="nav-list-icon"> {{ item.icon }} </mat-icon>
-          {{item.title}}
-        </a>
-
-      </ng-container>
-
-      <h2 matSubheader> {{ 'SALES_SUB_HEADER' | translate }} </h2>
-      <h2 matSubheader> {{ 'COLLATERAL_SUB_HEADER' | translate }} </h2>
-      <h2 matSubheader> {{ 'MARKETING_SUB_HEADER' | translate }} </h2>
-
-      <ng-container *ngIf="toolsRoutes">
-
-        <h2 matSubheader> {{ 'TOOLS_SUB_HEADER' | translate }} </h2>
-
-        <a *ngFor="let item of toolsRoutes"
-           mat-list-item
-           (click)="navigationSidenav.close()"
-           [routerLink]="[item.route]"
-           routerLinkActive="list-item-active">
-          <mat-icon matListIcon class="nav-list-icon"> {{ item.icon }} </mat-icon>
-          {{item.title}}
-        </a>
-
-      </ng-container>
-
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-  <mat-sidenav #commandbarSidenav position="end" mode="side" class="crm-command-bar-sidenav">
-
-    <mat-list style="padding: 10px;">
-
-      
-
-    </mat-list>
-
-  </mat-sidenav>
-
-  <mat-sidenav-content role="main" class="mat-drawer-content mat-sidenav-content">
-  
-    <toolbar-navigation *ngIf="isAuthenticated()" (toggleSidenav)="navigationSidenav.toggle()">
-    </toolbar-navigation>
-  
-    <router-outlet></router-outlet>
-    
-  </mat-sidenav-content>
-
-</mat-sidenav-container> -->
-
 <div class="sidebar_menu" [@onSideNavChange]="sidebarState">
   <mat-nav-list class="menu-list">
-
-    <!-- <a mat-list-item routerLinkActive="active-list-item" routerLink="login" title="Login">
-      <mat-icon class="icon" [@iconAnimation]="sidebarState">input</mat-icon>
-      <span class="label" [@labelAnimation]="sidebarState"> Login</span>
-    </a>
-    <mat-divider></mat-divider> -->
-
     <ng-container *ngIf="defaultRoutes">
-
-      <!-- <h2 [@labelAnimation]="sidebarState" matSubheader> {{ 'CUSTOMERS_SUB_HEADER' | translate }} </h2> -->
-
       <mat-list-item [busyIf]="isLoading" *ngFor="let item of defaultRoutes" mat-list-item (click)="navigationSidenav?.close()"
         [routerLink]="[item.route]" routerLinkActive="list-item-active">
         <mat-icon matListIcon class="nav-list-icon" [@iconAnimation]="sidebarState">{{item.icon}}</mat-icon>
@@ -114,3 +10,4 @@
     </ng-container>
   </mat-nav-list>
 </div>
+

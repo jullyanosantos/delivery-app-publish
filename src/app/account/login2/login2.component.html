@@ -1,0 +1,76 @@
+<div class="login-page bg-light mt-5">
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="bg-white shadow rounded">
+        <div class="row">
+          <div class="col-md-6 pe-0">
+            <div class="form-left h-100 py-5 px-5 overlay-panel">
+              <form [formGroup]="loginForm" class="row g-4" (ngSubmit)="onSubmit()">
+                <h1>{{'LOGIN_LABEL' | translate}}</h1>
+                <div class="col-12">
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="fa fa-user"></i></div>
+                    <input type="text" class="form-control cutom-input" formControlName="username" placeholder="E-mail"
+                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="fa fa-lock"></i></div>
+                    <input type="text" class="form-control cutom-input" formControlName="password"
+                      placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button [buttonBusy]="loading" [busyText]="' Carregando...'" [disabled]="loading"
+                    class="btn btn-primary float-end">
+                    <i class="fa fa-arrow-right"></i> {{'LOGIN_LABEL' | translate}}
+                  </button>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <div class="col-sm-6">
+                    <div class="form-check float-start">
+                      <input class="form-check-input" type="checkbox" id="inlineFormCheck" formControlName="rememberMe">
+                      <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6 float-end">
+                    <a href="#" class="float-end text-primary">Forgot Password?</a>
+                  </div>
+                </div>
+                <p class="text-center signUp">Not a member? <a data-toggle="tab" href="#signup" class="active">Sign Up</a></p>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-6 ps-0 d-none d-md-block">
+            <div class="form-right h-100 bg-primary text-white text-center pt-5 overlay-panel overlay-right">
+              <img src="https://i.imgur.com/uNGdWHi.png" class="image">
+              <div class="container overlay-panel-body">
+                <h2 class="">
+                  {{'HELLO_SALUTATION_LOGIN' | translate}}
+                </h2>
+                <p>{{'MSG_SALUTATION_LOGIN' | translate}}</p>
+                <div class="container">
+                  <button class="ghost" id="signUp">
+                    {{'SIGN_UP_BUTTON' | translate}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

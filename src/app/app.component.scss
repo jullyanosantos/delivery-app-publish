@@ -4,3 +4,17 @@
     // width: 270px;
     background: #1d1d1d;// #2c2e3e;
 }
+
+.container-content-logado{
+  margin-left: 240px;
+}
+
+.container-content-nao-logado{
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 600px) {
+	.sigsidenav-sidenav-content {
+		margin-left: 10px !important;
+	  }
+}

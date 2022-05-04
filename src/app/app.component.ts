@@ -7,6 +7,8 @@ import { OrderDetailsComponent } from './main/order/order-details/order-details.
 import { AppComponentBase } from './shared/AppComponentBase';
 import { LanguageService } from './shared/componentes/language/language.service';
 import { PrimeNGConfig } from 'primeng/api';
+import { MatSidenav } from '@angular/material/sidenav';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -19,16 +21,18 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent extends AppComponentBase implements OnInit {
   title = 'delivery-app-ui';
 
-  sidebarState: string;
   sidebarOrderDetailState: boolean = false;
+
+  sidebarState: string;
   isMiniSidebar = true;
   isExpadingMiniSideBar = false;
   showSideBar: boolean = false;
-
+  sideMenuOpened: boolean = true;
 
   @ViewChild("orderDetailsView") orderDetailsComponent: OrderDetailsComponent;
 
   constructor(
+    private observer: BreakpointObserver,
     injector: Injector,
     private sidebarService: SidenavService,
     private languageService: LanguageService,
@@ -40,6 +44,19 @@ export class AppComponent extends AppComponentBase implements OnInit {
     var lang = this.languageService.getLanguage();
     this.translateService.use(lang.value);
     this.primengConfig.ripple = true;
+  }
+
+  ngAfterViewInit() {
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      if (res.matches) {
+        // this.sidebarService.close();
+        // this.sidebarService.isMiniSidebar = this.isMiniSidebar = false;
+        
+      } else {
+        // this.sidebarService.open();
+        // this.sidebarService.isMiniSidebar = this.isMiniSidebar = true;
+      }
+    });
   }
 
   ngOnInit() {
@@ -81,8 +98,8 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
   mouseenter() {
 
+    debugger
     if (this.sidebarService.isMiniSidebar) {
-      // this.sidebarService.toggle();
       this.sidebarService.open();
       this.sidebarService.isExpadingMiniSideBar = true;
     }
@@ -92,7 +109,6 @@ export class AppComponent extends AppComponentBase implements OnInit {
 
     if (this.sidebarService.isMiniSidebar) {
       this.sidebarService.close();
-      // this.sidebarService.toggle();
       this.sidebarService.isExpadingMiniSideBar = false;
     }
   }

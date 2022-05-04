@@ -1,84 +1,14 @@
-<!-- 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">Hidden brand</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="app/main/home" routerLinkActive="active">
-                    <i class="fas fa-home"></i>
-                    <span class="ml-2 d-none d-lg-inline text-gray-600 small">
-                        Home
-                    </span>
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/app/main/acompanhamento-pedido" routerLinkActive="active">Pedidos</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-<div class="page-content">
-    <div class="container-fluid">
-        <router-outlet></router-outlet>
-    </div>
-</div> 
- -->
-<!-- 
- 
- <mat-drawer-container class="example-container mat-typography" autosize>
-    <mat-drawer #drawer mode="side" disableClose="true" opened="true">
-      <button mat-mini-fab (click)="isExpanded = !isExpanded" color="warn" style="margin: 10px;">
-        <mat-icon aria-label="Menu">menu</mat-icon>
-      </button>
-  
-      <mat-nav-list>
-        <mat-list-item>
-          <mat-icon mat-list-icon>person</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Management A</h4>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>assignment</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Management B</h4>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>domain</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Management C</h4>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>folder_shared</mat-icon>
-          <h4 mat-line *ngIf="isExpanded">Management X</h4>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      You cards and screen Contents goes here..
-      Will be pushed towards right on expanding side navbar.
-    </div>
-  </mat-drawer-container>
- -->
-
-
-<!-- <app-sidebar-nav></app-sidebar-nav> -->
-<!-- <app-header></app-header> -->
 <app-header *ngIf="showSideBar"></app-header>
 
-<mat-sidenav-container>
-  <mat-sidenav mode="side" #menu opened="true" class="side-bar" autosize fixedTopGap="56" (mouseenter)="mouseenter()"
+ <mat-sidenav-container>
+  <mat-sidenav mode="side" #menu opened="{{sideMenuOpened}}" 
+    class="side-bar" autosize fixedTopGap="56"
+    (mouseenter)="mouseenter()"
     (mouseleave)="mouseleave()">
     <app-sidebar *ngIf="showSideBar"></app-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav style="width:580px" [ngStyle]="{display: !sidebarOrderDetailState ? 'none' : 'block' }"
+  <mat-sidenav [ngStyle]="{display: !sidebarOrderDetailState ? 'none' : 'block' }"
   #OrderDetails position="end" mode="over" opened="{{sidebarOrderDetailState}}"
     (opened)="envarIdParaComponente()" (closed)="sidebarOrderDetailsService.close()">
     <mat-sidenav-content style="margin-left: 0px;">
@@ -86,17 +16,86 @@
     </mat-sidenav-content>
   </mat-sidenav>
 
-  <mat-sidenav-content [@onSideNavChange]="sidebarState" style="margin-left: 200px;">
+  <mat-sidenav-content class="sidenav-content" 
+    [@onSideNavChange]="sidebarState" 
+    [ngClass]="[showSideBar ? 'container-content-logado' : 'container-content-nao-logado']">
     <div class="container" style=" height: calc(100vh - 70px);">
       <app-breadcrumb></app-breadcrumb>
       <alert-message></alert-message>
       <router-outlet></router-outlet>
     </div>
-    <!-- <div class="container" style=" height: calc(100vh - 70px);">
-      <div class="page-content">
-        <alert-message></alert-message>
-        <router-outlet></router-outlet>
-      </div>
-    </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!-- 
+<app-header *ngIf="showSideBar"></app-header>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" *ngIf="showSideBar">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <span class="fs-5 d-none d-sm-inline">Menu</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+              <i class="fa fa-home fa-1x"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fa fa-tachometer"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="far fa-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+          </li>
+          <li>
+            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fa fa-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fa fa-solid fa-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+              <li class="w-100">
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </div>
+    <div class="col py-3">
+      <app-breadcrumb></app-breadcrumb>
+      <alert-message></alert-message>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->

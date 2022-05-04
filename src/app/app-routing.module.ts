@@ -5,9 +5,11 @@ import { HomeComponent } from './main/home/home.component';
 import { AuthGuard } from './shared/_helpers';
 import { LoginComponent } from './account/login/login.component';
 import { OrderHistoryComponent } from './main/order-history/order-history.component';
+import { Login2Component } from './account/login2/login2.component';
 
 const routes: Routes = [
     { path: 'account/login', component: LoginComponent },
+    { path: 'account/login2', component: Login2Component },
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'app/main/home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'app/main/order-panel', component: OrderPanelComponent, canActivate: [AuthGuard], data: { breadcrumb: "Pedidos" } },

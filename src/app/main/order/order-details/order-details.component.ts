@@ -24,7 +24,6 @@ export class OrderDetailsComponent implements OnInit {
   originally bred for hunting.`;
 
   showDetails(pedido: Pedido) {
-    debugger
     this.pedido = pedido;
   }
 

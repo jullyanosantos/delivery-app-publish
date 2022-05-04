@@ -161,7 +161,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function getOrderById() {
-            debugger
             if (!isLoggedIn()) return unauthorized();
 
             var order = orders.filter(x => x.id == idFromUrl());

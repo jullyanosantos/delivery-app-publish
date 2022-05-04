@@ -56,12 +56,10 @@ export class KanbanBoardComponent extends AppComponentBase implements OnInit {
   ]);
 
   dropEvent(pedido: CdkDragDrop<string[]>, status: number) {
-    debugger
     this.cdkDropListDropped.emit({ pedido, status });
   }
 
   showDetailsEvent(id: string): void {
-    debugger
     this.onClickDetailsEvent.emit(id);
   }
 

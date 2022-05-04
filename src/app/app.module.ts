@@ -61,6 +61,7 @@ import { NotificatonComponent } from './shared/componentes/notificaton/notificat
 import { ProfileSettingsComponent } from './shared/componentes/profile-settings/profile-settings.component';
 import { BreadcrumbComponent } from './shared/componentes/breadcrumb/breadcrumb.component';
 import { SearchUserAutocompleteComponent } from './shared/componentes/search-user-autocomplete/search-user-autocomplete.component';
+import { Login2Component } from './account/login2/login2.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -82,7 +83,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NotificatonComponent,
     ProfileSettingsComponent,
     BreadcrumbComponent,
-    SearchUserAutocompleteComponent
+    SearchUserAutocompleteComponent,
+    Login2Component
   ],
   imports: [
     FormsModule,

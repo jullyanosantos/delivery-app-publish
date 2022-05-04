@@ -44,8 +44,8 @@
     "DENY_ORDER": "Recusar Pedido",
     "ACCEPT_ORDER": "Aceitar Pedido",
 
-    "HELLO_SALUTATION_LOGIN": "Oi, Amigo!",
-    "MSG_SALUTATION_LOGIN" : "Se cadastre com suas informações e se junte a nós",
+    "HELLO_SALUTATION_LOGIN": "Olá!",
+    "MSG_SALUTATION_LOGIN" : "Se ainda não cadastrado, realize seu cadastre com suas informações e se junte a nós",
 
     "PROFILE_NAVIGATION_BAR_BUTTON": "Perfil",
     "SIGN_OUT_NAVIGATION_BAR_BUTTON": "Sign Out",
