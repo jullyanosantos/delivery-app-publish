@@ -61,9 +61,9 @@ export class Login2Component extends AppComponentBase implements OnInit {
       container.classList.add("right-panel-active");
     });
 
-    signInButton.addEventListener('click', () => {
-      container.classList.remove("right-panel-active");
-    });
+    // signInButton.addEventListener('click', () => {
+    //   container.classList.remove("right-panel-active");
+    // });
   }
 
   // convenience getter for easy access to form fields

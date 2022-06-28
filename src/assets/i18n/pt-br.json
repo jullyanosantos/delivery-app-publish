@@ -27,6 +27,7 @@
     "DONE":"Finalizado",
     "FILTER":"Filtro",
     "CUSTOMER":"Cliente",
+    "TYPE2CHARACTERES": "Digite pelo menos 2 caracteres",
 
     "DESCRIPTION": "Descrição",
     "VALUE": "Valor",

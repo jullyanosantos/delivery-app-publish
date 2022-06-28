@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
 import { first } from 'rxjs/operators';
+import { AppComponentBase } from '../../AppComponentBase';
 import { CustomerService } from '../../_services/customer.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CustomerService } from '../../_services/customer.service';
   templateUrl: './search-user-autocomplete.component.html',
   styleUrls: ['./search-user-autocomplete.component.css']
 })
-export class SearchUserAutocompleteComponent implements OnInit {
+export class SearchUserAutocompleteComponent extends AppComponentBase implements OnInit {
 
   @Input() isMult: boolean = false;
   @Output() searchBarChangeEmitter: any = new EventEmitter();
@@ -19,7 +20,9 @@ export class SearchUserAutocompleteComponent implements OnInit {
   control: any;
   value: any;
 
-  constructor(private userService: CustomerService) { }
+  constructor(private userService: CustomerService, injector: Injector) {
+    super(injector);
+  }
 
   ngOnInit() {
 

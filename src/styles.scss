@@ -12,6 +12,13 @@ body {
   // overflow: hidden;
 }
 
+.p-breadcrumb ul li.p-breadcrumb-chevron {
+  margin: 0 0.5rem 0 0.5rem;
+  color: #495057;
+  font-size: 11px !important;
+  margin-top: 3px !important;
+}
+
 //autocomplete
 .p-autocomplete .p-autocomplete-loader {
   right: 40px !important;

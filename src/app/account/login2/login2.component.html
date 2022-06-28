@@ -21,7 +21,7 @@
                 <div class="col-12">
                   <div class="input-group">
                     <div class="input-group-text"><i class="fa fa-lock"></i></div>
-                    <input type="text" class="form-control cutom-input" formControlName="password"
+                    <input type="password" class="form-control cutom-input" formControlName="password"
                       placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                       <div *ngIf="f.password.errors.required">Password is required</div>

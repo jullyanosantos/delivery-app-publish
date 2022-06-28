@@ -1,22 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { AppComponentBase } from '../../AppComponentBase';
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.css']
 })
-export class BreadcrumbComponent implements OnInit {
+export class BreadcrumbComponent extends AppComponentBase implements OnInit {
 
   static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
-  
-  readonly home =  {icon: 'pi pi-home', routerLink: '/'};
+
+  readonly home = { icon: 'pi pi-home', routerLink: '/' };
 
   menuItems: MenuItem[];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, injector: Injector) {
+    super(injector);
+  }
 
   ngOnInit(): void {
     this.router.events
@@ -31,17 +34,21 @@ export class BreadcrumbComponent implements OnInit {
       return breadcrumbs;
     }
 
+    debugger
     for (const child of children) {
       const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
       if (routeURL !== '') {
         url += `/${routeURL}`;
       }
 
-      const label = child.snapshot.data[BreadcrumbComponent.ROUTE_DATA_BREADCRUMB];
-      if (label !== undefined) {
-        breadcrumbs.push({ label, url });
-      }
+      var label = child.snapshot.data[BreadcrumbComponent.ROUTE_DATA_BREADCRUMB];
 
+      if (label !== undefined) {
+        this.translateService.get(label).subscribe(value => {
+          label = value;
+          breadcrumbs.push({ label, url });
+        });
+      }
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
   }

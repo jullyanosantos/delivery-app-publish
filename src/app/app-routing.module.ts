@@ -11,9 +11,9 @@ const routes: Routes = [
     { path: 'account/login', component: LoginComponent },
     { path: 'account/login2', component: Login2Component },
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'app/main/home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'app/main/order-panel', component: OrderPanelComponent, canActivate: [AuthGuard], data: { breadcrumb: "Pedidos" } },
-    { path: 'app/main/order-history', component: OrderHistoryComponent, canActivate: [AuthGuard], data: { breadcrumb: "Histórico de Pedidos" }, },
+    { path: 'app/main/home', component: HomeComponent, canActivate: [AuthGuard], data: { breadcrumb: "HOME" } },
+    { path: 'app/main/order-panel', component: OrderPanelComponent, canActivate: [AuthGuard], data: { breadcrumb: "ORDERS" } },
+    { path: 'app/main/order-history', component: OrderHistoryComponent, canActivate: [AuthGuard], data: { breadcrumb: "ORDERS-HISTORY" }, },
 
     // { path: '**', redirectTo: 'app/main/home' }
     { path: '**', redirectTo: '' }

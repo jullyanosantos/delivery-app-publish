@@ -1,26 +1,23 @@
 <app-header *ngIf="showSideBar"></app-header>
 
- <mat-sidenav-container>
-  <mat-sidenav mode="side" #menu opened="{{sideMenuOpened}}" 
-    class="side-bar" autosize fixedTopGap="56"
-    (mouseenter)="mouseenter()"
-    (mouseleave)="mouseleave()">
+<mat-sidenav-container>
+  <mat-sidenav mode="side" #menu opened="{{sideMenuOpened}}" class="side-bar" autosize fixedTopGap="56"
+    (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
     <app-sidebar *ngIf="showSideBar"></app-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav [ngStyle]="{display: !sidebarOrderDetailState ? 'none' : 'block' }"
-  #OrderDetails position="end" mode="over" opened="{{sidebarOrderDetailState}}"
-    (opened)="envarIdParaComponente()" (closed)="sidebarOrderDetailsService.close()">
+  <mat-sidenav [ngStyle]="{display: !sidebarOrderDetailState ? 'none' : 'block' }" #OrderDetails position="end"
+    mode="over" opened="{{sidebarOrderDetailState}}" (opened)="envarIdParaComponente()"
+    (closed)="sidebarOrderDetailsService.close()">
     <mat-sidenav-content style="margin-left: 0px;">
       <app-order-details #orderDetailsView></app-order-details>
     </mat-sidenav-content>
   </mat-sidenav>
 
-  <mat-sidenav-content class="sidenav-content" 
-    [@onSideNavChange]="sidebarState" 
-    [ngClass]="[showSideBar ? 'container-content-logado' : 'container-content-nao-logado']">
+  <mat-sidenav-content class="sidenav-content" [@onSideNavChange]="sidebarState"
+    [ngClass]="[showSideBar ? 'container-content-logado' : 'container-content-nao-logado']" style="margin-left: none !important;">
     <div class="container" style=" height: calc(100vh - 70px);">
-      <app-breadcrumb></app-breadcrumb>
+      <app-breadcrumb *ngIf="showSideBar"></app-breadcrumb>
       <alert-message></alert-message>
       <router-outlet></router-outlet>
     </div>
